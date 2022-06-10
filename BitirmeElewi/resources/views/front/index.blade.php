@@ -35,11 +35,6 @@
 
         });
     </script>
-    <!--End-slider-script-->
-    <!--about-starts-->
-
-    <!--about-end-->
-    <!--product-starts-->
     <div class="product">
         <div class="container">
             <div class="product-top">
@@ -63,6 +58,5 @@
             </div>
         </div>
     </div>
-    <!--product-end-->
-    <!--information-starts-->
+
 @endsection

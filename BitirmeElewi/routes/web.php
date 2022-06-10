@@ -3,11 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
+Auth::routes();
 Route::get('/', [App\Http\Controllers\front\indexController::class,'index'])->name('index');
 Route::get('/urun/detay/{UrunAdi}',[App\Http\Controllers\front\urun\indexController::class,'index'])->name('urun.detay');
-Auth::routes();
 Route::get('/home',[\App\Http\Controllers\HomeController::class,'index'])->name('home');
-
+Route::get('/basket/add/{id}',[\App\Http\Controllers\front\basket\indexController::class, 'add'])->name('basket.add');
+Route::get('/basket',[\App\Http\Controllers\front\basket\indexController::class,'index'])->name('basket.index');
+Route::get('/basket/remove/{id}', [App\Http\Controllers\front\basket\indexController::class, 'remove'])->name('basket.remove');
 Route::group(['namespace'=>'admin','prefix'=>'admin','as'=>'admin.'],function (){
 
     Route::get('/',[\App\Http\Controllers\admin\indexController::class,'index'])->name('index');

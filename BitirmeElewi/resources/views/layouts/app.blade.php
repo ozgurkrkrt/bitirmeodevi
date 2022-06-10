@@ -29,33 +29,36 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="top-header-main">
             <div class="col-md-6 top-header-left">
                 <div class="drop">
+                    @auth
+                        <div class="box">
+                            <a href="" style="color:white;">{{\Illuminate\Support\Facades\Auth::user()->UyeAdi}}</a>
+                        </div>
+                        <div class="box">
+                            <a onclick="event.preventDefault();document.getElementById('logout-form').submit();" href="{{route('logout')}}">Çıkış Yap</a>
+                            <form action="{{route('logout')}}" id="logout-form" method="POST">
+                                {{csrf_field()}}
+                            </form>
+                        </div>
+                    @endauth
+                    @guest
                     <div class="box">
-                        <select tabindex="4" class="dropdown drop">
-                            <option value="" class="label">Para Birimi :</option>
-                            <option value="1">Dollar</option>
-                            <option value="2">Euro</option>
-                            <option value="3">Türk Lirası</option>
-                        </select>
+                        <a href="{{route('login')}}" style="color:white;">Giriş Yap</a>
                     </div>
                     <div class="box1">
-                        <select tabindex="4" class="dropdown">
-                            <option value="" class="label">Dil :</option>
-                            <option value="1">English</option>
-                            <option value="2">Tükççe</option>
-                            <option value="3">German</option>
-                        </select>
+                        <a href="{{url('/register')}}" style="color:white;">Kayıt Ol</a>
                     </div>
+                        @endguest
                     <div class="clearfix"></div>
                 </div>
             </div>
             <div class="col-md-6 top-header-left">
                 <div class="cart box_1">
-                    <a href="checkout.html">
+                    <a href="{{route('basket.index')}}">
                         <div class="total">
-                            <span class="simpleCart_total"></span></div>
-                        <img src="images/cart-1.png" alt="" />
+                            <span >{{\App\Helper\sepetHelper::totalPrice()}} TL</span></div>
+                        <img src="{{asset('images/cart-1.png')}}" alt="" />
                     </a>
-                    <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+                    <p><a href="javascript:;" class="simpleCart_empty">Sepeti Boşalt</a></p>
                     <div class="clearfix"> </div>
                 </div>
             </div>
@@ -66,7 +69,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--top-header-->
 <!--start-logo-->
 <div class="logo">
-    <a href="index.html"><h1>MODA DÜNYASI</h1></a>
+    <a href="{{route('index')}}"><h1>MODA DÜNYASI</h1></a>
 </div>
 <!--start-logo-->
 <!--bottom-header-->
